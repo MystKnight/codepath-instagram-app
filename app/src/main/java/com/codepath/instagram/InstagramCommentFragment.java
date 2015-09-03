@@ -37,6 +37,7 @@ public class InstagramCommentFragment extends DialogFragment {
 
         //getDialog().setTitle(title);
         getDialog().getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+        getDialog().setCanceledOnTouchOutside(true);
 
         View view = inflater.inflate(R.layout.fragment_comments, container);
         ListView lvComments = (ListView)view.findViewById(R.id.lvComments);
@@ -45,6 +46,7 @@ public class InstagramCommentFragment extends DialogFragment {
         Instagram instagram = activity.instagrams.get(position);
         CommentsAdapter adapter = new CommentsAdapter(activity, instagram.commentCollection.comments);
         lvComments.setAdapter(adapter);
+
 
         return view;
     }

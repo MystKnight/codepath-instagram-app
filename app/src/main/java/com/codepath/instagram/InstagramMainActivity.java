@@ -52,12 +52,13 @@ public class InstagramMainActivity extends AppCompatActivity {
         this.lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
-                TextView tvViewAllComments = (TextView) view.findViewById(R.id.tvViewAllComments);
+                TextView tvViewAllComments = (TextView)view.findViewById(R.id.tvViewAllComments);
+                final int pos = (int)tvViewAllComments.getTag();
                 tvViewAllComments.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         FragmentManager fm = getSupportFragmentManager();
-                        InstagramCommentFragment dialogFragment = InstagramCommentFragment.newInstance("Comments", position);
+                        InstagramCommentFragment dialogFragment = InstagramCommentFragment.newInstance("Comments", pos);
                         dialogFragment.show(fm, "fragment_comments");
                     }
                 });
@@ -96,7 +97,7 @@ public class InstagramMainActivity extends AppCompatActivity {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 InstagramCollection instagramCollection = new InstagramCollection(response);
-                List<Instagram> instagrams = instagramCollection.instagrams;
+                instagrams = instagramCollection.instagrams;
 
                 // Clear the list view and then re-populate
                 adapter.clear();

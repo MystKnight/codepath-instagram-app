@@ -48,6 +48,7 @@ public class InstagramAdapter extends ArrayAdapter<Instagram> {
         date.setText(Utils.getSmartDate(instagram.date));
 
         TextView message = (TextView)convertView.findViewById(R.id.tvMessage);
+        message.setVisibility(View.VISIBLE);
         if (instagram.message != null) {
             message.setText(instagram.message);
         } else {
@@ -59,10 +60,11 @@ public class InstagramAdapter extends ArrayAdapter<Instagram> {
         rl.removeAllViews();
 
         TextView tvViewAllComments = (TextView)convertView.findViewById(R.id.tvViewAllComments);
+        tvViewAllComments.setVisibility(View.VISIBLE);
         int commentCount = instagram.commentCollection.comments.size();
         if (commentCount > 0) {
             // Dynamically create the last 2 comments
-            for (int i = 1; i <= 2; i++) {
+            for (int i = 2; i >= 1; i--) {
                 CommentLayout cl = new CommentLayout(getContext());
                 int lastIndex = instagram.commentCollection.comments.size() - i;
                 Comment comment = instagram.commentCollection.comments.get(lastIndex);
@@ -71,6 +73,7 @@ public class InstagramAdapter extends ArrayAdapter<Instagram> {
             }
 
             tvViewAllComments.setText(String.format("View all %d comments", instagram.commentCount));
+            tvViewAllComments.setTag(position);
         } else {
             tvViewAllComments.setVisibility(View.GONE);
         }

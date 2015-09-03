@@ -5,7 +5,9 @@ import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
 
+import java.util.Calendar;
 import java.util.Date;
+import java.util.TimeZone;
 
 /**
  * Created by yahuijin on 9/2/15.
@@ -29,8 +31,13 @@ public class Utils {
     public static String getSmartDate(String since1970) {
         String smartDate;
         Date date = new Date(Long.parseLong(since1970) * 1000);
+        Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("GMT"));
+        calendar.setTime(date);
 
-        long timeDiff = new Date().getTime() - date.getTime();
+        Calendar calendarNow = Calendar.getInstance(TimeZone.getTimeZone("GMT"));
+        calendarNow.setTime(new Date());
+
+        long timeDiff = calendar.getTime().getTime() - calendarNow.getTime().getTime();
         long timeDiffSecs = timeDiff / 1000;
         long timeDiffMins = timeDiff / (60 * 1000);
         long timeDiffHours = timeDiff / (60 * 60 * 1000);
