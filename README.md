@@ -10,4 +10,4 @@ This project is based on the requirement posted at: http://courses.codepath.com/
 - Can view additional comments for a given post
 
 ![Image of Demo]
-(https://s3.amazonaws.com/uploads.hipchat.com/14477/52355/HJJjpX0ovrZN5Di/instagram3.gif)
+(https://s3.amazonaws.com/uploads.hipchat.com/14477/52355/HYdOkLYyyGfPZ4q/instagram5.gif)
